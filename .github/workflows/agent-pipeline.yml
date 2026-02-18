@@ -1,0 +1,66 @@
+name: Agent Pipeline
+description: Automatically process PDFs and maintain knowledge base
+
+on:
+  push:
+    paths:
+      - 'inputs/*.pdf'
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install pymupdf
+          # Marker installation (if needed)
+          # pip install marker-pdf
+      
+      - name: Detect new PDFs
+        id: detect
+        run: |
+          echo "pdfs=$(ls inputs/*.pdf 2>/dev/null | wc -l)" >> $GITHUB_OUTPUT
+      
+      - name: Convert PDFs
+        if: steps.detect.outputs.pdfs > 0
+        run: |
+          python3 src/converter.py \
+            --input inputs/ \
+            --output knowledge/ \
+            --format all
+      
+      - name: Generate stats
+        run: |
+          python3 src/search.py --stats > knowledge/stats.json
+      
+      - name: Generate daily report
+        run: |
+          echo "# Daily Knowledge Report" > memory/daily-report.md
+          echo "" >> memory/daily-report.md
+          echo "Date: $(date -u +%Y-%m-%d)" >> memory/daily-report.md
+          echo "" >> memory/daily-report.md
+          echo "## Statistics" >> memory/daily-report.md
+          echo "\`\`\`" >> memory/daily-report.md
+          cat knowledge/stats.json >> memory/daily-report.md
+          echo "\`\`\`" >> memory/daily-report.md
+      
+      - name: Commit changes
+        run: |
+          git config user.name "agent-library-bot"
+          git config user.email "bot@agent-library.dev"
+          git add knowledge/ memory/
+          git diff --quiet && git diff --staged --quiet || \
+            git commit -m "docs: update knowledge base $(date -u +%Y-%m-%d)"
+          git push
