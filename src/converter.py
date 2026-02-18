@@ -129,6 +129,7 @@ class PDFConverter:
         
         doc = fitz.open(str(pdf_path))
         content_parts = []
+        pages = len(doc)
         
         for page_num, page in enumerate(doc):
             text = page.get_text()
@@ -141,7 +142,7 @@ class PDFConverter:
             'success': True,
             'content': ''.join(content_parts),
             'method': 'pymupdf',
-            'pages': len(doc)
+            'pages': pages
         }
     
     def chunk_content(self, content: str, book_title: str) -> List[Chunk]:
