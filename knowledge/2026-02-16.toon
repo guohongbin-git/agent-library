@@ -1,0 +1,227 @@
+# Daily Memory: 2026-02-16
+@author Agent Self
+@created 2026-02-18T18:45:12.578869
+@chunks 9
+
+---
+
+## 2026-02-16_0000
+  title: # 2026-02-16
+  tokens: 0
+  keywords: 
+
+
+
+---
+
+## 2026-02-16_0001
+  title: 启动与身份确定
+  tokens: 134
+  keywords: kaggle, challenge, titanic, bootstrap, api
+
+### Bootstrap
+- 郭宏斌给我看了关于"Kaggle 自动进化"的 2026 年文档
+- 务实、直接、先验证再行动的性格
+- 目标：帮助宏斌完成 Kaggle 竞赛自动进化
+
+### Kaggle 环境配置
+- ✅ 配置了 Kaggle API (kaggle.json → ~/.kaggle/)
+- ✅ 安装了 kaggle CLI (pip3 install kaggle)
+- ✅ 发现用户参加了 9 个竞赛
+
+### 已参加的竞赛
+1. **playground-series-s6e2** - Kudos - 12天后 ⚡ **当前挑战**
+2. **med-gemma-impact-challenge** - $100k - 8天后截止 🔴 (数据异常)
+3. **vesuvius-challenge-surface-detection** - $200k - 11天后截止 🔴
+4. **ai-mathematical-olympiad-progress-prize-3** - $2.2M - 58天后 🟢
+5. titanic, house-prices, store-sales, spaceship-titanic (练习)
+
+---
+
+---
+
+## 2026-02-16_0002
+  title: Playground Series S6E2 挑战
+  tokens: 36
+  keywords: top
+
+### 用户成绩
+- **排名**: 673 / 2793
+- **最高分**: 0.95361
+- **提交次数**: 50 次
+- **最后提交**: 2026-02-14
+
+### 我的目标
+- 超过 0.95361 → 进入 Top 500
+- 目标：LB > 0.95400
+
+---
+
+---
+
+## 2026-02-16_0003
+  title: 进化历程
+  tokens: 150
+  keywords: phase, score, early, stopping, baseline
+
+### Phase 1 (22:30) - Baseline
+**策略**: 3 模型集成（LGB+XGB+CAT）
+
+**结果**:
+- CV Score: 0.95530 ✅
+- LB Score: 0.95347 ⚠️
+- **差距**: -0.00183（过拟合）
+- **对比用户**: -0.00014（略低）
+
+**问题诊断**:
+- 过拟合严重（CV-LB 差距 0.183%）
+- Early stopping 不够激进
+- 缺少正则化
+
+**知识积累**:
+- ✅ 3 模型集成有效
+- ✅ CatBoost 表现最好
+- ❌ 需要更激进的正则化
+
+---
+
+### Phase 2 (22:34) - 减少过拟合（进行中）
+**方法论**: ML-Master (MLE-Bench #1)
+
+**策略**:
+1. 更激进正则化
+   - 学习率：0.05 → 0.01
+   - num_leaves：31 → 15
+   - min_data_in_leaf：新增 100
+   - L1/L2 正则化：0.1
+2. 更早 early stopping
+   - 轮数：50 → 20
+3. 增加特征工程
+   - 医学特征（年龄分段、血压分类、心率储备）
+   - 交互特征
+
+**目标**: LB > 0.95361
+
+**状态**: 训练中（PID 14688）
+
+---
+
+---
+
+## 2026-02-16_0004
+  title: ML-Master 方法论应用
+  tokens: 120
+  keywords: exploration, reasoning, cognitive, accumulation, adaptive
+
+### 核心原则
+1. **Cognitive Accumulation（认知积累）**
+   - 每次进化积累知识
+   - 将执行痕迹提炼为稳定知识
+
+2. **Exploration + Reasoning（探索与推理）**
+   - Exploration: 尝试不同策略
+   - Reasoning: 分析成功/失败原因
+   - 整合: 相互指导
+
+3. **Adaptive Memory（自适应记忆）**
+   - 选择性捕获重要洞察
+   - 记录经验和教训
+   - 避免重复犯错
+
+### 知识库
+
+**成功经验**:
+- ✅ 3 模型集成有效（CV 0.95530）
+- ✅ CatBoost 在此数据集表现最好
+- ✅ 5-Fold CV 稳定
+
+**失败教训**:
+- ❌ 过拟合严重（CV-LB 差距 0.183%）
+- ❌ Early stopping 不够激进
+- ❌ 缺少正则化
+
+**待验证假设**:
+- 🤔 降低学习率能否减少过拟合？
+- 🤔 更多特征能否提高泛化？
+- 🤔 Stacking 能否进一步提升？
+
+---
+
+---
+
+## 2026-02-16_0005
+  title: 进化计划
+  tokens: 72
+  keywords: cycle, stacking
+
+### 自动时间表
+- **Cycle 1** (23:00) - 减少过拟合 → LB > 0.95361
+- **Cycle 2** (03:00) - 特征工程 → LB > 0.95400
+- **Cycle 3** (07:00) - Stacking → LB > 0.95420
+- **Cycle 4** (11:00) - 伪标签 → LB > 0.95440
+
+### 自适应机制
+- 如果 CV-LB 差距 > 0.001 → 增加正则化
+- 如果 CV-LB 差距 < 0.0005 → 增加模型复杂度
+- 如果连续 3 次无提升 → 切换策略
+
+---
+
+---
+
+## 2026-02-16_0006
+  title: 系统状态
+  tokens: 95
+  keywords: phase, pid, stacking, baseline, features
+
+### 后台进程
+- PID 1410 (wait_and_train.sh) - ✅ 已完成
+- PID 14688 (Phase 2 训练) - 🔄 进行中
+
+### 脚本文件
+- ✅ `train_v1.py` - Phase 1 baseline
+- ✅ `train_v2_phase2.py` - Phase 2（减少过拟合）
+- ✅ `features.py` - 特征工程
+- ✅ `stacking.py` - Stacking 集成
+- ✅ `pseudo_label.py` - 伪标签
+- ✅ `auto_submit.py` - 自动提交
+
+### 日志文件
+- ✅ `playground-s6e2_evolution.log` - 进化日志
+- ✅ `ml_master_config.json` - ML-Master 配置
+
+---
+
+---
+
+## 2026-02-16_0007
+  title: 待解决问题
+  tokens: 40
+  keywords: phase, gateway, device, token, mismatch
+
+- [ ] Gateway 认证问题（device token mismatch）- 不影响核心功能
+- [x] Kaggle API 限速 → 已通过手动下载解决
+- [x] 数据下载 → 完成
+- [x] Phase 1 训练 → 完成（LB 0.95347）
+- [ ] Phase 2 训练 → 进行中
+
+---
+
+---
+
+## 2026-02-16_0008
+  title: 重要里程碑
+  tokens: 47
+  keywords: phase, master
+
+**22:30** - Phase 1 完成，LB 0.95347（略低于目标）  
+**22:34** - 学习 ML-Master 方法论  
+**22:35** - 启动 Phase 2（减少过拟合）  
+**~23:00** - Phase 2 完成（预计）  
+**明天** - 继续 Phase 3-4
+
+---
+
+_持续进化中... 基于 ML-Master 方法论_
+
+---
