@@ -1,0 +1,50 @@
+{
+  "title": "Guwenguanzhi",
+  "author": "Unknown",
+  "created": "2026-02-18T15:10:11.993405",
+  "total_chunks": 3,
+  "chunks": [
+    {
+      "id": "guwenguanzhi_0000",
+      "content": "",
+      "title": "---",
+      "summary": "",
+      "keywords": [],
+      "tokens_estimate": 0,
+      "source_page": null,
+      "section": "---"
+    },
+    {
+      "id": "guwenguanzhi_0001",
+      "content": "[General Information]\n书名=古文观止（上）\n作者=钟基，李先银，王身钢译注\n页数=462\n出版社=中华书局\n出版日期=2011\nSS号=12812181\nDX号=000007670622\nurl=http://book1.duxiu.com/bookDetail.jsp?dxNumber=\n000007670622&d=0AC525C78658006349386ED63ABFA22F&fenlei=\n0802140401&sw=%D6%D0%BB%AA%BE%AD%B5%E4%C3%FB%D6%F8%C8%\nAB%B1%BE%C8%AB%D7%A2%C8%AB%D2%EB%B4%D4%CA%E9\n\n\n---",
+      "title": "Page 483",
+      "summary": "[General Information]\n书名=古文观止（上）\n作者=钟基，李先银，王身钢译注\n页数=462\n出版社=中华书局\n出版日期=2011\nSS号=12812181\nDX号=00000767...",
+      "keywords": [
+        "general",
+        "information",
+        "url",
+        "http",
+        "duxiu"
+      ],
+      "tokens_estimate": 79,
+      "source_page": null,
+      "section": "Page 483"
+    },
+    {
+      "id": "guwenguanzhi_0002",
+      "content": "[General Information]\n书名=古文观止（下）\n作者=钟基，李先银，王身钢译注\n页数=1008\n出版社=中华书局\n出版日期=2011\nSS号=12812184\nDX号=000007670623\nurl=http://book1.duxiu.com/bookDetail.jsp?dxNumber=\n000007670623&d=AF75799846F346F989128902752E287D&\nfenlei=0802140401&sw=%D6%D0%BB%AA%BE%AD%B5%E4%C3%FB%D\n6%F8%C8%AB%B1%BE%C8%AB%D7%A2%C8%AB%D2%EB%B4%D4%CA%E9",
+      "title": "Page 1045",
+      "summary": "[General Information]\n书名=古文观止（下）\n作者=钟基，李先银，王身钢译注\n页数=1008\n出版社=中华书局\n出版日期=2011\nSS号=12812184\nDX号=0000076...",
+      "keywords": [
+        "general",
+        "information",
+        "url",
+        "http",
+        "duxiu"
+      ],
+      "tokens_estimate": 78,
+      "source_page": null,
+      "section": "Page 1045"
+    }
+  ]
+}
