@@ -52,6 +52,10 @@ python3 src/search.py --query "concept from book"
 | Vector DB | SQLite + sqlite-vec |
 | Protocol | MCP (Model Context Protocol) |
 
+## Live Demo
+
+🔗 **GitHub**: https://github.com/guohongbin-git/agent-library
+
 ## Status
 
 🚧 Under active development
